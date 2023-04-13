@@ -58,7 +58,7 @@ namespace _11._04._23_HW
             }
             string[] items = { a76, a80, a92, a95, a98 };
             patrol.Items =items;
-            patrol.Show();
+            patrol.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace _11._04._23_HW
                 cafe.mainform = this;
             }
             cafe.Start();
-            cafe.Show();
+            cafe.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -80,7 +80,32 @@ namespace _11._04._23_HW
                 edit.mainform = this;
             }
             edit.Start();
-            edit.Show();
+            edit.ShowDialog();
+        }
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == WindowState)
+            {
+                Hide();
+                this.notifyIcon1.Visible = true;
+                this.notifyIcon1.ShowBalloonTip(3);
+            }
+        }
+        private void RestoreWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            this.notifyIcon1.Visible = false;
+        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            this.notifyIcon1.Visible = false;
         }
     }
 }

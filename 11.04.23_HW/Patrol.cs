@@ -87,5 +87,22 @@ namespace _11._04._23_HW
         {
             Close();
         }
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == WindowState)
+            {
+                mainform.Hide();
+                Hide();
+                this.notifyIcon1.Visible = true;
+                this.notifyIcon1.ShowBalloonTip(3);
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            mainform.Show();
+            ShowDialog();
+            notifyIcon1.Visible = false;
+        }
     }
 }
